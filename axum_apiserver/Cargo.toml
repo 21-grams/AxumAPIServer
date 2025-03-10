@@ -9,8 +9,9 @@ description = "Baseline server with multi-lingual MiniJinja2 and HTMX"
 # Server and routing
 axum = { version = "0.8.0", features = ["macros"] }
 tokio = { version = "1.35.1", features = ["full"] }
-tower = "0.4.13"
-tower-http = { version = "0.4.0", features = ["fs", "trace", "compression-gzip"] }
+# tower = "0.4.4"
+# tower-http = { version = "0.4.4", features = ["trace", "compression-gzip", "services::fs"] }
+tower-http = { version = "0.6.2", features = ["services", "compression-gzip", "trace"] }
 tracing = "0.1"
 tracing-subscriber = { version = "0.3", features = ["env-filter"] }
 

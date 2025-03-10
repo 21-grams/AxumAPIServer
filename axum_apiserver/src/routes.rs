@@ -5,8 +5,8 @@ use axum::{
     response::IntoResponse,
     routing::get,
 };
-use tower_http::services::ServeDir;
 use std::sync::Arc;
+use tower_http::services::ServeDir;
 
 use crate::config::AppState;
 use crate::handlers;
@@ -23,7 +23,7 @@ pub fn create_routes(state: Arc<AppState>) -> Router {
         .route("/api/feature/:id", get(handlers::features::get_feature))
         
         // Static files
-        .nest_service("/static", ServeDir::new("static"))
+        //.nest_service("/static", tower_http::services::ServeDir::new("static"))
         
         // Apply middleware
         .layer(axum::middleware::from_fn_with_state(state.clone(), middleware::language_detector))

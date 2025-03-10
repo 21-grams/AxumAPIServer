@@ -3,6 +3,7 @@ use std::sync::Arc;
 use axum::Router;
 use tower_http::{
     compression::CompressionLayer,
+    services::ServeDir,
     trace::TraceLayer,
 };
 use tracing_subscriber::{layer::SubscriberExt, util::SubscriberInitExt};
