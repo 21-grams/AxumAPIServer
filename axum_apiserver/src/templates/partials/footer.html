@@ -1,0 +1,26 @@
+<footer>
+    <div class="footer-content">
+        <div class="footer-section neomorph">
+            <h3>{{ footer.about_title|default("About Us") }}</h3>
+            <p>{{ footer.about_text|default("Modern Rust-based web application using Axum and HTMX.") }}</p>
+        </div>
+        
+        <div class="footer-section neomorph">
+            <h3>{{ footer.links_title|default("Quick Links") }}</h3>
+            <ul>
+                <li><a href="/">{{ footer.home|default("Home") }}</a></li>
+                <li><a href="/about">{{ footer.about|default("About") }}</a></li>
+                <li><a href="/contact">{{ footer.contact|default("Contact") }}</a></li>
+            </ul>
+        </div>
+        
+        <div class="footer-section neomorph">
+            <h3>{{ footer.contact_title|default("Contact Us") }}</h3>
+            <p>{{ footer.contact_text|default("Email: info@example.com") }}</p>
+        </div>
+    </div>
+    
+    <div class="copyright neomorph-inset">
+        <p>{{ footer.copyright|default("© 2024 Axum Web Server. All Rights Reserved.") }}</p>
+    </div>
+</footer>

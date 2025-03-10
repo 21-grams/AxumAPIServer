@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="{{ lang }}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title|default("Axum Web Server") }}</title>
+    <link rel="stylesheet" href="/static/css/styles.css">
+    <script src="/static/js/htmx.min.js" defer></script>
+</head>
+<body>
+    <div class="container">
+        {% include "partials/nav.html" %}
+        
+        <main>
+            {% block content %}{% endblock %}
+        </main>
+        
+        {% include "partials/footer.html" %}
+    </div>
+</body>
+</html>

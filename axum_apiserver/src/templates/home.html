@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="hero neomorph">
+    <h1>{{ content.headline|default("Welcome to Axum Web Server") }}</h1>
+    <p>{{ content.subheading|default("A modern Rust web server with Axum and HTMX") }}</p>
+    
+    <div class="features">
+        <div class="feature"
+             hx-get="/api/feature/1"
+             hx-trigger="mouseenter once"
+             hx-swap="innerHTML">
+            <h3>{{ content.feature1_title|default("Feature 1") }}</h3>
+            <p>{{ content.feature1_desc|default("Loading...") }}</p>
+        </div>
+        
+        <div class="feature"
+             hx-get="/api/feature/2"
+             hx-trigger="mouseenter once"
+             hx-swap="innerHTML">
+            <h3>{{ content.feature2_title|default("Feature 2") }}</h3>
+            <p>{{ content.feature2_desc|default("Loading...") }}</p>
+        </div>
+        
+        <div class="feature"
+             hx-get="/api/feature/3"
+             hx-trigger="mouseenter once"
+             hx-swap="innerHTML">
+            <h3>{{ content.feature3_title|default("Feature 3") }}</h3>
+            <p>{{ content.feature3_desc|default("Loading...") }}</p>
+        </div>
+    </div>
+</section>
+{% endblock %}

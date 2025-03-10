@@ -1,0 +1,24 @@
+<nav>
+    <div class="logo neomorph">
+        <a href="/">{{ nav.logo_text|default("Axum Web") }}</a>
+    </div>
+    
+    <ul class="nav-links">
+        <li><a href="/" class="neomorph">{{ nav.home|default("Home") }}</a></li>
+        <li><a href="/about" class="neomorph">{{ nav.about|default("About") }}</a></li>
+        <li><a href="/contact" class="neomorph">{{ nav.contact|default("Contact") }}</a></li>
+    </ul>
+    
+    <div class="language-selector">
+        <select hx-get="/change-language" 
+                hx-target="body" 
+                hx-swap="outerHTML"
+                class="neomorph">
+            {% for code in available_languages %}
+                <option value="{{ code }}" {% if code == lang %}selected{% endif %}>
+                    {{ nav["lang_" ~ code]|default(code|upper) }}
+                </option>
+            {% endfor %}
+        </select>
+    </div>
+</nav>
