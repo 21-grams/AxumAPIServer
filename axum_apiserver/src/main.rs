@@ -1,6 +1,7 @@
 use std::sync::Arc;
 
 use axum::Router;
+use axum::handler::HandlerWithoutStateExt;
 use tower_http::{
     compression::CompressionLayer,
     services::ServeDir,

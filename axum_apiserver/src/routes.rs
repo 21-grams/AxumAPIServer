@@ -1,6 +1,7 @@
 use axum::{
     Router,
     handler::Handler,
+    handler::HandlerWithoutStateExt,
     http::{StatusCode, Uri},
     response::IntoResponse,
     routing::get,
@@ -23,7 +24,7 @@ pub fn create_routes(state: Arc<AppState>) -> Router {
         .route("/api/feature/:id", get(handlers::features::get_feature))
         
         // Static files
-        //.nest_service("/static", tower_http::services::ServeDir::new("static"))
+        .nest_service("/static", ServeDir::new("static"))
         
         // Apply middleware
         .layer(axum::middleware::from_fn_with_state(state.clone(), middleware::language_detector))
@@ -32,7 +33,7 @@ pub fn create_routes(state: Arc<AppState>) -> Router {
         .with_state(state)
         
         // Fallback for 404s
-        .fallback(handle_404.into_service())
+        .fallback(handle_404)
 }
 
 /// Handler for 404 Not Found responses
