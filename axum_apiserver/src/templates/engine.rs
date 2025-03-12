@@ -15,7 +15,7 @@ impl TemplateEngine {
         let mut env = Environment::new();
         
         // Set up template loader to load from the templates directory
-        env.set_loader(minijinja::path_loader("templates"));
+        env.set_loader(minijinja::path_loader("../axum_apiserver/src/templates"));
         
         // Add any custom filters here if needed
         // env.add_filter("custom_filter", |value: String| { ... });

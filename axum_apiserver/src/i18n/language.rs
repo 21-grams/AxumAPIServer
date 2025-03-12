@@ -44,7 +44,7 @@ pub struct LanguageManager {
 impl LanguageManager {
     /// Create a new language manager by loading languages from the lang.json file
     pub fn new() -> Result<Self> {
-        let content = fs::read_to_string("i18n/lang.json")
+        let content = fs::read_to_string("./src/i18n/lang.json")
             .map_err(|e| AppError::Language(format!("Failed to read lang.json: {}", e)))?;
             
         let languages: HashMap<String, Language> = serde_json::from_str(&content)

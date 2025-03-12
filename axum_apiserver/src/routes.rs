@@ -21,7 +21,7 @@ pub fn create_routes(state: Arc<AppState>) -> Router {
         .route("/change-language", get(handlers::language::change_language))
         
         // API routes for HTMX
-        .route("/api/feature/:id", get(handlers::features::get_feature))
+        .route("/api/feature/{id}", get(handlers::features::get_feature))
         
         // Static files
         .nest_service("/static", ServeDir::new("static"))
