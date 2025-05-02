@@ -49,6 +49,12 @@ impl LanguageManager {
             
         let languages: HashMap<String, Language> = serde_json::from_str(&content)
             .map_err(|e| AppError::Language(format!("Failed to parse lang.json: {}", e)))?;
+        //debug
+        for (key, value) in &languages{
+            // println!("{:?}:{:?}",key,value); {:?} dump, {:#?} pretty print
+            println!("{:#?}:{:#?}",key,value);
+        }
+        
             
         // Validate that all supported languages are present
         for lang in SUPPORTED_LANGUAGES {

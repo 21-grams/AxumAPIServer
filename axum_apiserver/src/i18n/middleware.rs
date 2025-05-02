@@ -53,15 +53,16 @@ pub async fn language_detector(
 
 /// Extract language from the Cookie header
 fn extract_lang_from_cookie(cookie_str: &str) -> Option<String> {
-    cookie_str.split(';')
-        .find_map(|pair| {
-            let mut parts = pair.trim().split('=');
-            if parts.next() == Some("lang") {
-                parts.next().map(|v| v.to_string())
-            } else {
-                None
+    for cookie_pair in cookie_str.split(';') {
+        let pair = cookie_pair.trim();
+        if let Some(eq_pos) = pair.find('=') {
+            let (name, value) = pair.split_at(eq_pos);
+            if name == "lang" {
+                return Some(value[1..].to_string()); // Skip the '=' character
             }
-        })
+        }
+    }
+    None
 }
 
 /// Extract language from Accept-Language header, falling back to default

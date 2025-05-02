@@ -16,6 +16,6 @@ pub mod utils {
             .extensions()
             .get::<LanguageInfo>()
             .map(|info| info.lang.clone())
-            .unwrap_or_else(|| "en".to_string())
+            .unwrap_or_else(|| "fr".to_string())
     }
 }

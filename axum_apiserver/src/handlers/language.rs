@@ -1,7 +1,7 @@
 use axum::{
     extract::{Query, State},
-    http::header,
-    response::IntoResponse,
+    http::{header, HeaderMap},
+    response::{Html, IntoResponse},
 };
 use serde::Deserialize;
 use std::sync::Arc;
@@ -46,9 +46,11 @@ pub async fn change_language(
     // Set the language cookie
     let cookie = format!("lang={}; Path=/; Max-Age=31536000; SameSite=Lax", lang);
     
-    // Return the response with the cookie
-    Ok((
-        [(header::SET_COOKIE, cookie)],
-        html,
-    ))
+    // Create headers with cookie and content-type
+    let mut headers = HeaderMap::new();
+    headers.insert(header::SET_COOKIE, cookie.parse().unwrap());
+    headers.insert(header::CONTENT_TYPE, "text/html; charset=utf-8".parse().unwrap());
+    
+    // Return the response with the cookie and proper content-type
+    Ok((headers, Html(html)))
 }

@@ -10,7 +10,9 @@
     </ul>
     
     <div class="language-selector">
-        <select hx-get="/change-language" 
+        <select name="lang" 
+                hx-get="/change-language" 
+                hx-include="this"
                 hx-target="body" 
                 hx-swap="outerHTML"
                 class="neomorph">
